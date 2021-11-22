@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
+const clientPassport = require("passport")
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
@@ -32,7 +33,7 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
-
+app.use(clientPassport.initialize());
 
 require('./app/routes/user.routes.js')(app);
 

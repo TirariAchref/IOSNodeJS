@@ -1,9 +1,13 @@
+const router = require('express').Router()
+
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 module.exports = (app) => {
     const user = require('../controllers/user.controller.js');
 
     // Create a new Note
     app.post('/createuser', user.create);
-
+ 
     // Retrieve all Notes
     app.get('/allusers', user.findAll);
 
@@ -15,4 +19,12 @@ module.exports = (app) => {
 
     // Delete a Note with noteId
     app.delete('/deleteuser/:userId', user.delete);
+
+    //Login
+    app.post('/loginClient', user.findclient)
+
+    app.get('/tokenaccount',user.findtoken)
+
+    app.get('/getuserEmail/:Email', user.findOneEmail);
+
 }
