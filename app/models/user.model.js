@@ -6,7 +6,8 @@ const UserSchema = mongoose.Schema({
     email:String,
     password:String,
     phone:String,
-    categorieclient:String
+    categorieclient:String,
+    imageUrl:String
 }, {
     timestamps: true
 });

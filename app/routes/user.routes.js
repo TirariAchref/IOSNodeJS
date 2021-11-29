@@ -27,4 +27,7 @@ module.exports = (app) => {
 
     app.get('/getuserEmail/:Email', user.findOneEmail);
 
+    app.post('/sendmail',user.sendmaill)
+    app.post('/sendsms',user.sendnumber)
+
 }

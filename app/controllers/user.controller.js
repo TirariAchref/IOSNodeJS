@@ -2,7 +2,9 @@ const User = require('../models/user.model.js');
 
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-
+var nodemailer = require('nodemailer');
+const Nexmo = require('nexmo');
+const saltRounds = 10;
 // Create and Save a new Note
 exports.create = (req, res) => {
     // Validate request
@@ -19,7 +21,8 @@ exports.create = (req, res) => {
         email :req.body.email ,
         password :req.body.password ,
         phone :req.body.phone ,
-        categorieclient :req.body.categorieclient 
+        categorieclient :req.body.categorieclient,
+        imageUrl : req.body.imageUrl
         
     });
 // Hash password before saving in database
@@ -110,14 +113,16 @@ exports.update = (req, res) => {
             message: "Note content can not be empty"
         });
     }
-    
-
+  
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.password , salt);
+    console.log(hash)
     // Find note and update it with the request body
     User.findByIdAndUpdate(req.params.userId, {
         nom : req.body.nom || "Untitled Note",
         prenom : req.body.prenom ,
         email :req.body.email ,
-        password :req.body.password ,
+        password : hash ,
         phone :req.body.phone ,
         categorieclient :req.body.categorieclient 
     }, {new: true})
@@ -128,6 +133,7 @@ exports.update = (req, res) => {
             });
         }
         res.send(note);
+        
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
@@ -245,4 +251,67 @@ exports.findtoken = (req, res) => {
     } else {
       res.json({message: 'Unauthorized access'})
     }
+};
+
+
+// send mail
+exports.sendmaill = (req, res) => {
+   
+  
+    async function main() {
+   
+        let transporter = nodemailer.createTransport({
+          service: 'gmail',
+         
+          auth: {
+              user: 'medteckesprit@gmail.com',
+              pass: 'medteck_esprit_2021'
+          },
+       });
+      
+     
+       
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+          from: 'medteckesprit@gmail.com',
+          to: req.body.email,
+          subject: 'Verification account',
+          text: req.body.code
+      });
+      console.log("Message sent: %s", info.messageId);
+     
+    }
+    main().catch(console.error);
+  
+  
+};
+
+
+  
+//send SMS
+
+
+exports.sendnumber = (req, res) => {
+   
+const nexmo = new Nexmo({
+    apiKey: "de034273",
+    apiSecret: "eXYhpKiWRz7l3bT4"
+});
+var to = '21653533544';
+var from = 'MedTeck';
+var text = req.body.code;
+
+
+nexmo.message.sendSms(from, to, text, (err, responseData) => {
+    if (err) {
+        console.log(err);
+    } else {
+        if(responseData.messages[0]['status'] === "0") {
+            console.log("Message sent successfully.");
+        } else {
+            console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+        }
+    }
+})
+  
 };
