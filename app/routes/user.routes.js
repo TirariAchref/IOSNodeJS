@@ -24,6 +24,7 @@ module.exports = (app) => {
     app.post('/loginClient', user.findclient)
 
     app.get('/tokenaccount',user.findtoken)
+    app.get('/tokenaccountall',user.findtokenall)
 
     app.get('/getuserEmail/:Email', user.findOneEmail);
 

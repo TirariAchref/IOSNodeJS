@@ -1,5 +1,5 @@
 const User = require('../models/question.model.js');
-
+const jwt = require("jsonwebtoken")
 // Create and Save a new Note
 exports.create = (req, res) => {
     // Validate request
@@ -119,4 +119,44 @@ exports.delete = (req, res) => {
             message: "Could not delete note with id " + req.params.questionId
         });
     });
+};
+
+exports.findtokenall = (req, res) => {
+   
+    const headers = req.headers['authorization']
+    console.log(headers)
+    if(headers) {
+      // Bearer oabsdoabsoidabsiodabsiodbasoid
+      const token = headers.split(' ')[1]
+      const decoded = jwt.verify(token, 'secret')
+      
+      if(decoded) {
+        let username = decoded.id
+        console.log("////////////////////////////////////////////////////")
+        console.log(username)
+        User.find()
+        .then(note => {
+            if(!note) {
+                return res.status(404).send({
+                    message: "Note not found with id " + username
+                });            
+            }
+            res.send(note);
+        }).catch(err => {
+            if(err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "Note not found with id " + username
+                });                
+            }
+            return res.status(500).send({
+                message: "Error retrieving note with id " + username
+            });
+        });
+      } else {
+        res.json({message: 'Unauthorized access'})
+      }
+      
+    } else {
+      res.json({message: 'Unauthorized access'})
+    }
 };

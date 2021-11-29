@@ -15,4 +15,5 @@ module.exports = (app) => {
 
     // Delete a Note with noteId
     app.delete('/deletequestion/:questionId', question.delete);
+    app.get('/tokenaccountallquestion',question.findtokenall)
 }
