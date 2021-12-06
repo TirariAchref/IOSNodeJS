@@ -7,7 +7,9 @@ module.exports = (app) => {
    
     // Create a new Note
     app.post('/createuser', user.create);
- 
+
+
+   
     // Retrieve all Notes
     app.get('/allusers', user.findAll);
 
@@ -16,6 +18,8 @@ module.exports = (app) => {
 
     // Update a Note with noteId
     app.put('/updateuser/:userId', user.update);
+     // Update a Note with noteId
+     app.put('/updateuserpass/:userId', user.updatenotpassword);
 
     // Delete a Note with noteId
     app.delete('/deleteuser/:userId', user.delete);

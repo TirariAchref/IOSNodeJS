@@ -18,8 +18,21 @@ mongoose.connect(dbConfig.url, {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
 });
+// Consts to save the image
+const multer = require('multer');
+const Client = require('./app/models/user.model.js');
+const storage = multer.diskStorage({
+   destination: function (req, file, cb) {
+       cb(null, './uploads/');
+   },
+   filename: function (req, file, cb) {
+      cb(null, Date.now() + file.originalname);
+   }
+});
+var upload = multer({ storage: storage });
 // create express app
 const app = express();
+
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -44,7 +57,20 @@ require('./app/routes/question.routes.js')(app);
 require('./app/routes/messagerie.routes.js')(app);
 require('./app/routes/event.routes.js')(app);
 
-
+//---------------update image----------------
+router.route('/updateImageClient/:id').post( upload.single('profileFile'), (req, res) => {
+    Client.findById(req.params.id)
+    .then(client => {        
+       
+      client.image = req.file.path
+  
+      client.save()
+        .then(() => res.json('Image Client updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+        
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+  });
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('', router);
