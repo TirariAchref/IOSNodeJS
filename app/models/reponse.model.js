@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const reponseSchema = mongoose.Schema({
     description: String,
-    datecreation:Date
+    idUser:String,
+    idQuestion : String
 }, {
     timestamps: true
 });

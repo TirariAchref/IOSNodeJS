@@ -1,0 +1,691 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Medteck Blogg Application API",
+      "description": "Medteck Blogg Application API",
+      "license": {
+        "name": "Medteck",
+        "url": ""
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "tags": [
+      {
+        "name": "Users",
+        "description": "API for users in the system"
+      },
+      {
+        "name": "Reponses",
+        "description": "API for Reponse in the system"
+      },
+      {
+        "name": "Questions",
+        "description": "API for Question in the system"
+      },
+      {
+        "name": "Messageries",
+        "description": "API for Messagerie in the system"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/createuser": {
+        "post": {
+          "tags": [
+            "Users"
+          ],
+          "description": "Create new user in system",
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "User that we want to create",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New user is created",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+    },
+
+    "/allusers": {
+            "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Get all users in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Users"
+              }
+            }
+          }
+        }
+      },
+      "/getuser/{userId}": {
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "ID of user that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Users"
+          ],
+          "summary": "Get user with given ID",
+          "responses": {
+            "200": {
+              "description": "User is found",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+    },
+    "/deleteuser/{userId}": {
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "ID of user that we want to find",
+            "type": "string"
+          }
+        ],
+        "delete": {
+          "summary": "Delete user with given ID",
+          "tags": [
+            "Users"
+          ],
+          "responses": {
+            "200": {
+              "description": "User is deleted",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+    },
+    "/updateuser/{userId}": {
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "ID of user that we want to find",
+            "type": "string"
+          }
+        ],  
+        "put": {
+          "summary": "Update user with give ID",
+          "tags": [
+            "Users"
+          ],
+          "parameters": [
+            {
+              "name": "user",
+              "in": "body",
+              "description": "User with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User is updated",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      },
+      "/createreponse": {
+        "post": {
+          "tags": [
+            "Reponses"
+          ],
+          "description": "Create new Reponses in system",
+          "parameters": [
+            {
+              "name": "reponse",
+              "in": "body",
+              "description": "Reponses that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Reponse"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New Reponse is created",
+              "schema": {
+                "$ref": "#/definitions/Reponse"
+              }
+            }
+          }
+        }
+    },
+
+    "/allreponses": {
+            "get": {
+          "tags": [
+            "Reponses"
+          ],
+          "summary": "Get all Reponses in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Reponses"
+              }
+            }
+          }
+        }
+      },
+      "/getreponse/{reponseId}": {
+        "parameters": [
+          {
+            "name": "reponseId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Reponse that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Reponses"
+          ],
+          "summary": "Get Reponse with given ID",
+          "responses": {
+            "200": {
+              "description": "Reponse is found",
+              "schema": {
+                "$ref": "#/definitions/Reponse"
+              }
+            }
+          }
+        }
+    },
+    "/deletereponse/{reponseId}": {
+        "parameters": [
+          {
+            "name": "reponseId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Reponse that we want to find",
+            "type": "string"
+          }
+        ],
+        "delete": {
+          "summary": "Delete Reponse with given ID",
+          "tags": [
+            "Reponses"
+          ],
+          "responses": {
+            "200": {
+              "description": "Reponse is deleted",
+              "schema": {
+                "$ref": "#/definitions/Reponse"
+              }
+            }
+          }
+        }
+    },
+    "/updatereponse/{reponseId}": {
+        "parameters": [
+          {
+            "name": "reponseId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Reponse that we want to find",
+            "type": "string"
+          }
+        ],  
+        "put": {
+          "summary": "Update Reponse with give ID",
+          "tags": [
+            "Reponses"
+          ],
+          "parameters": [
+            {
+              "name": "reponse",
+              "in": "body",
+              "description": "Reponse with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/Reponse"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Reponse is updated",
+              "schema": {
+                "$ref": "#/definitions/Reponse"
+              }
+            }
+          }
+        }
+      },
+      "/createquestion": {
+        "post": {
+          "tags": [
+            "Questions"
+          ],
+          "description": "Create new Question in system",
+          "parameters": [
+            {
+              "name": "question",
+              "in": "body",
+              "description": "Question that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Question"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New Question is created",
+              "schema": {
+                "$ref": "#/definitions/Question"
+              }
+            }
+          }
+        }
+    },
+
+    "/allquestions": {
+            "get": {
+          "tags": [
+            "Questions"
+          ],
+          "summary": "Get all Questions in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Questions"
+              }
+            }
+          }
+        }
+      },
+      "/getquestion/{questionId}": {
+        "parameters": [
+          {
+            "name": "questionId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Question that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Questions"
+          ],
+          "summary": "Get Question with given ID",
+          "responses": {
+            "200": {
+              "description": "Question is found",
+              "schema": {
+                "$ref": "#/definitions/Question"
+              }
+            }
+          }
+        }
+    },
+    "/deletequestion/{questionId}": {
+        "parameters": [
+          {
+            "name": "questionId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Question that we want to find",
+            "type": "string"
+          }
+        ],
+        "delete": {
+          "summary": "Delete Question with given ID",
+          "tags": [
+            "Questions"
+          ],
+          "responses": {
+            "200": {
+              "description": "Question is deleted",
+              "schema": {
+                "$ref": "#/definitions/Question"
+              }
+            }
+          }
+        }
+    },
+    "/updatequestion/{questionId}": {
+        "parameters": [
+          {
+            "name": "questionId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Question that we want to find",
+            "type": "string"
+          }
+        ],  
+        "put": {
+          "summary": "Update Question with give ID",
+          "tags": [
+            "Questions"
+          ],
+          "parameters": [
+            {
+              "name": "question",
+              "in": "body",
+              "description": "Question with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/Question"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Question is updated",
+              "schema": {
+                "$ref": "#/definitions/Question"
+              }
+            }
+          }
+        }
+      },
+      "/createmessagerie": {
+        "post": {
+          "tags": [
+            "Messageries"
+          ],
+          "description": "Create new Messagerie in system",
+          "parameters": [
+            {
+              "name": "messagerie",
+              "in": "body",
+              "description": "Messagerie that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Messagerie"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New Messagerie is created",
+              "schema": {
+                "$ref": "#/definitions/Messagerie"
+              }
+            }
+          }
+        }
+    },
+
+    "/allmessagerie": {
+            "get": {
+          "tags": [
+            "Messageries"
+          ],
+          "summary": "Get all Messageries in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Messageries"
+              }
+            }
+          }
+        }
+      },
+      "/getmessagerie/{messagerieId}": {
+        "parameters": [
+          {
+            "name": "messagerieId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Messagerie that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Messageries"
+          ],
+          "summary": "Get Messagerie with given ID",
+          "responses": {
+            "200": {
+              "description": "Messagerie is found",
+              "schema": {
+                "$ref": "#/definitions/Messagerie"
+              }
+            }
+          }
+        }
+    },
+    "/deletemessagerie/{messagerieId}": {
+        "parameters": [
+          {
+            "name": "messagerieId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Messagerie that we want to find",
+            "type": "string"
+          }
+        ],
+        "delete": {
+          "summary": "Delete Messagerie with given ID",
+          "tags": [
+            "Messageries"
+          ],
+          "responses": {
+            "200": {
+              "description": "Messagerie is deleted",
+              "schema": {
+                "$ref": "#/definitions/Messagerie"
+              }
+            }
+          }
+        }
+    },
+    "/updatemessagerie/{messagerieId}": {
+        "parameters": [
+          {
+            "name": "messagerieId",
+            "in": "path",
+            "required": true,
+            "description": "ID of Messagerie that we want to find",
+            "type": "string"
+          }
+        ],  
+        "put": {
+          "summary": "Update Messagerie with give ID",
+          "tags": [
+            "Messageries"
+          ],
+          "parameters": [
+            {
+              "name": "messagerie",
+              "in": "body",
+              "description": "Messagerie with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/Messagerie"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Messagerie is updated",
+              "schema": {
+                "$ref": "#/definitions/Messagerie"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "User": {
+        "required": [
+          "email",
+          "_id"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "email": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "nom": {
+            "type": "string"
+          },
+          "prenom": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "categorieclient": {
+            "type": "string"
+          }
+        }
+      },
+      "Users": {
+        "type": "array",
+        "$ref": "#/definitions/User"
+      },
+      "Reponse": {
+        "required": [
+          "description",
+          "idUser"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "description": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "idUser": {
+            "type": "string"
+          },
+          "idQuestion": {
+            "type": "string"
+          }
+        }
+      },
+      "Reponses": {
+        "type": "array",
+        "$ref": "#/definitions/Reponse"
+      }
+      ,
+      "Question": {
+        "required": [
+          "description",
+          "subject"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "description": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "idClient": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          }
+        }
+      },
+      "Questions": {
+        "type": "array",
+        "$ref": "#/definitions/Reponse"
+      }
+      ,
+      "Messagerie": {
+        "required": [
+          "message",
+          "object"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "message": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "object": {
+            "type": "string"
+          },
+          
+          "datecreation": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          }
+        }
+      },
+      "Messageries": {
+        "type": "array",
+        "$ref": "#/definitions/Messagerie"
+      }
+    }
+  }

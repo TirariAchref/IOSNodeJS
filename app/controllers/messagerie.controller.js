@@ -14,7 +14,8 @@ exports.create = (req, res) => {
         message:req.body.message,
         object: req.body.object,
         datecreation:req.body.datecreation,
-        from: req.body.from
+        from: req.body.from,
+        to : req.body.to
     
        
     });
@@ -78,7 +79,8 @@ exports.update = (req, res) => {
         message:req.body.message,
         object: req.body.object,
         datecreation:req.body.datecreation,
-        from: req.body.from
+        from: req.body.from,
+        to : req.body.to
     }, {new: true})
     .then(note => {
         if(!note) {

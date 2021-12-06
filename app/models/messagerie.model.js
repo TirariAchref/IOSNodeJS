@@ -4,7 +4,8 @@ const messagerieSchema = mongoose.Schema({
     message: String,
     object: String,
     datecreation:Date,
-    from: String
+    from: String,
+    to : String
 }, {
     timestamps: true
 });

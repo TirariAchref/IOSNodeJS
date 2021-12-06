@@ -12,7 +12,8 @@ exports.create = (req, res) => {
     // Create a Note
     const user = new User({
         description: req.body.description,
-        datecreation:req.body.datecreation
+        idUser:req.body.idUser,
+        idQuestion : req.body.idQuestion
        
     });
 
@@ -73,7 +74,8 @@ exports.update = (req, res) => {
     // Find note and update it with the request body
     User.findByIdAndUpdate(req.params.reponseId, {
         description: req.body.description,
-        datecreation:req.body.datecreation
+        idUser:req.body.idUser,
+        idQuestion : req.body.idQuestion
     }, {new: true})
     .then(note => {
         if(!note) {

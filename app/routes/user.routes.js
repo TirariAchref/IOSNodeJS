@@ -2,9 +2,9 @@ const router = require('express').Router()
 
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const user = require('../controllers/user.controller.js');
 module.exports = (app) => {
-    const user = require('../controllers/user.controller.js');
-
+   
     // Create a new Note
     app.post('/createuser', user.create);
  

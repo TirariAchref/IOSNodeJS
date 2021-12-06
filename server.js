@@ -3,9 +3,11 @@ const bodyParser = require('body-parser');
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
-
+const router = require('express').Router();
 const clientPassport = require("passport")
 mongoose.Promise = global.Promise;
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
 
 // Connecting to the database
 mongoose.connect(dbConfig.url, {
@@ -43,3 +45,6 @@ require('./app/routes/messagerie.routes.js')(app);
 require('./app/routes/event.routes.js')(app);
 
 
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('', router);
