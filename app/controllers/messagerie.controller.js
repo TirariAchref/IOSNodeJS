@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     const user = new User({
         message:req.body.message,
         object: req.body.object,
-        datecreation:req.body.datecreation,
+       
         from: req.body.from,
         to : req.body.to
     
@@ -78,7 +78,7 @@ exports.update = (req, res) => {
     User.findByIdAndUpdate(req.params.messagerieId, {
         message:req.body.message,
         object: req.body.object,
-        datecreation:req.body.datecreation,
+       
         from: req.body.from,
         to : req.body.to
     }, {new: true})

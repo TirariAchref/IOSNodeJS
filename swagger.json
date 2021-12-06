@@ -671,10 +671,7 @@
           "object": {
             "type": "string"
           },
-          
-          "datecreation": {
-            "type": "string"
-          },
+         
           "from": {
             "type": "string"
           },
