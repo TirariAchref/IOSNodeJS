@@ -367,8 +367,8 @@ exports.sendmaill = (req, res) => {
 exports.sendnumber = (req, res) => {
    
 const nexmo = new Nexmo({
-    apiKey: "de034273",
-    apiSecret: "eXYhpKiWRz7l3bT4"
+    apiKey: "85d1ce6f",
+    apiSecret: "RhqR5jBBgwwa4NmO"
 });
 var to = '21653533544';
 var from = 'MedTeck';
@@ -386,5 +386,7 @@ nexmo.message.sendSms(from, to, text, (err, responseData) => {
         }
     }
 })
+
+
   
 };

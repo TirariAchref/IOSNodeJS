@@ -15,4 +15,6 @@ module.exports = (app) => {
 
     // Delete a Note with noteId
     app.delete('/deletereponse/:reponseId', reponse.delete);
+
+    app.get('/getreponsesid/:idQuestion', reponse.findallbyid);
 }
