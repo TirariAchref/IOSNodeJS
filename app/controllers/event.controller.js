@@ -15,7 +15,7 @@ exports.create = (req, res) => {
         description: req.body.description,
         money: req.body.money,
         moneyreached: req.body.moneyreached,
-        datefin:req.body.datefin
+      
        
     
        
@@ -81,7 +81,7 @@ exports.update = (req, res) => {
         description: req.body.description,
         money: req.body.money,
         moneyreached: req.body.moneyreached,
-        datefin:req.body.datefin
+      
        
     }, {new: true})
     .then(note => {

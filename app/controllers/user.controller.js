@@ -22,6 +22,8 @@ exports.create = (req, res) => {
         email :req.body.email ,
         password :req.body.password ,
         phone :req.body.phone ,
+        log :req.body.log ,
+        lat :req.body.lat ,
         categorieclient :req.body.categorieclient,
         imageUrl : req.body.imageUrl
         

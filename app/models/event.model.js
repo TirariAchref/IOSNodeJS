@@ -5,7 +5,7 @@ const eventSchema = mongoose.Schema({
     description: String,
     money: String,
     moneyreached: String,
-    datefin:Date
+   
    
 }, {
     timestamps: true
