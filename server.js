@@ -58,14 +58,14 @@ require('./app/routes/messagerie.routes.js')(app);
 require('./app/routes/event.routes.js')(app);
 
 //---------------update image----------------
-router.route('/updateImageClient/:id').post( upload.single('profileFile'), (req, res) => {
+router.route('/updateImageClient/:id').post( upload.single('Image'), (req, res) => {
     Client.findById(req.params.id)
     .then(client => {        
        
       client.imageUrl = req.file.path
   
       client.save()
-        .then(() => res.json('Image Client updated!'))
+        .then(() => res.send(client))
         .catch(err => res.status(400).json('Error: ' + err));
         
     })
