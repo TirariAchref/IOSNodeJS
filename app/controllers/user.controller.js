@@ -180,6 +180,37 @@ exports.updatenotpassword = (req, res) => {
     });
 };
 
+// Update a note identified by the noteId in the request
+exports.updatemap = (req, res) => {
+   
+  
+   
+    // Find note and update it with the request body
+    User.findByIdAndUpdate(req.params.userId, {
+        log :req.body.log ,
+        lat :req.body.lat ,
+    }, {new: true})
+    .then(note => {
+        if(!note) {
+            return res.status(404).send({
+                message: "Note not found with id " + req.params.userId
+            });
+        }
+        res.send(note);
+        
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Note not found with id " + req.params.userId
+            });                
+        }
+        return res.status(500).send({
+            message: "Error updating note with id " + req.params.userId
+        });
+    });
+};
+
+
 
 // Delete a note with the specified noteId in the request
 exports.delete = (req, res) => {

@@ -20,6 +20,7 @@ module.exports = (app) => {
     app.put('/updateuser/:userId', user.update);
      // Update a Note with noteId
      app.put('/updateuserpass/:userId', user.updatenotpassword);
+     app.put('/updatemap/:userId', user.updatemap);
 
     // Delete a Note with noteId
     app.delete('/deleteuser/:userId', user.delete);
