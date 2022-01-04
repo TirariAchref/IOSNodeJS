@@ -62,7 +62,7 @@ router.route('/updateImageClient/:id').post( upload.single('profileFile'), (req,
     Client.findById(req.params.id)
     .then(client => {        
        
-      client.image = req.file.path
+      client.imageUrl = req.file.path
   
       client.save()
         .then(() => res.json('Image Client updated!'))
@@ -71,6 +71,6 @@ router.route('/updateImageClient/:id').post( upload.single('profileFile'), (req,
     })
     .catch(err => res.status(400).json('Error: ' + err));
   });
-
+  app.use('/uploads', express.static('uploads'));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('', router);
