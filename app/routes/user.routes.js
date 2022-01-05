@@ -9,6 +9,7 @@ module.exports = (app) => {
     app.post('/createuser', user.create);
 
 
+    
    
     // Retrieve all Notes
     app.get('/allusers', user.findAll);

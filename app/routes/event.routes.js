@@ -1,7 +1,7 @@
 module.exports = (app) => {
     const event = require('../controllers/event.controller.js');
 
-    // Create a new Note
+    // Create a new Note  
     app.post('/createevent', event.create);
 
     // Retrieve all Notes
