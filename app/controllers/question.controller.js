@@ -15,7 +15,9 @@ exports.create = (req, res) => {
         
         subject : req.body.subject,
    
-        idClient:req.body.idClient
+        idClient:req.body.idClient,
+        nbrrate : req.body.nbrrate,
+        nbruser : req.body.nbruser
     });
 
     // Save Note in the database
@@ -65,20 +67,12 @@ exports.findOne = (req, res) => {
 
 // Update a note identified by the noteId in the request
 exports.update = (req, res) => {
-    // Validate Request
-    if(!req.body.description) {
-        return res.status(400).send({
-            message: "Note content can not be empty"
-        });
-    }
+   
 
     // Find note and update it with the request body
     User.findByIdAndUpdate(req.params.questionId, {
-        description: req.body.description,
-        
-        subject : req.body.subject,
-   
-        idClient:req.body.idClient
+        nbrrate : req.body.nbrrate,
+        nbruser : req.body.nbruser
     }, {new: true})
     .then(note => {
         if(!note) {
