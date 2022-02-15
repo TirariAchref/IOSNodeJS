@@ -5,6 +5,7 @@ const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 const router = require('express').Router();
 const clientPassport = require("passport")
+const port =process.env.PORT ||3000
 mongoose.Promise = global.Promise;
 var swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('./swagger.json');
@@ -45,7 +46,7 @@ app.get('/', (req, res) => {
 });
 
 // listen for requests
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("Server is listening on port 3000");
 });
 app.use(clientPassport.initialize());
