@@ -20,5 +20,7 @@
     "passport": "^0.5.0",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.2.0"
+    
   }
+  
 }
