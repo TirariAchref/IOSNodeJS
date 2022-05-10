@@ -5,7 +5,8 @@ const reponseSchema = mongoose.Schema({
     idUser:String,
     idQuestion : String
 }, {
-    timestamps: true
+    timestamps: false,
+    versionKey: false
 });
 
 module.exports = mongoose.model('reponse', reponseSchema);

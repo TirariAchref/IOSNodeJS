@@ -260,12 +260,7 @@ exports.findclient = (req, res) => {
                   expiresIn: 31556926 // 1 year in seconds
                 },
                 (err, token) => {
-                  res.json({
-                    success: true,
-                    token:"Bearer "+ token,
-                
-                    id : client._id
-                  });
+                  res.json(client);
                 }
               );
             } else {
@@ -385,7 +380,7 @@ exports.sendmaill = (req, res) => {
           text: req.body.code
       });
       console.log("Message sent: %s", info.messageId);
-     
+     res.json(info);
     }
     main().catch(console.error);
   

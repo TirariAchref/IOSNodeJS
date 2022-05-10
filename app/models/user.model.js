@@ -11,7 +11,8 @@ const UserSchema = mongoose.Schema({
     categorieclient:String,
     imageUrl:String
 }, {
-    timestamps: true
+    timestamps: false,
+    versionKey: false
 });
 
 module.exports = mongoose.model('user', UserSchema);

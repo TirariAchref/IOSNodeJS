@@ -7,7 +7,8 @@ const questionSchema = mongoose.Schema({
     nbrrate : String,
     nbruser : String
 }, {
-    timestamps: true
+    timestamps: false,
+    versionKey: false
 });
 
 module.exports = mongoose.model('question', questionSchema);

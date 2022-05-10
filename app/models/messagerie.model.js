@@ -7,7 +7,8 @@ const messagerieSchema = mongoose.Schema({
     from: String,
     to : String
 }, {
-    timestamps: true
+    timestamps: false,
+    versionKey: false
 });
 
 module.exports = mongoose.model('messagerie', messagerieSchema);
