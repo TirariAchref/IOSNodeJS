@@ -13,6 +13,7 @@ exports.create = (req, res) => {
     const user = new User({
         description: req.body.description,
         idUser:req.body.idUser,
+        nameUser:req.body.nameUser,
         idQuestion : req.body.idQuestion
        
     });
@@ -75,6 +76,7 @@ exports.update = (req, res) => {
     User.findByIdAndUpdate(req.params.reponseId, {
         description: req.body.description,
         idUser:req.body.idUser,
+        nameUser:req.body.nameUser,
         idQuestion : req.body.idQuestion
     }, {new: true})
     .then(note => {

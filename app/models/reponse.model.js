@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const reponseSchema = mongoose.Schema({
     description: String,
     idUser:String,
+    nameUser:String,
     idQuestion : String
 }, {
     timestamps: false,

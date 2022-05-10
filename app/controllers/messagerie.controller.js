@@ -12,8 +12,8 @@ exports.create = (req, res) => {
     // Create a Note
     const user = new User({
         message:req.body.message,
-        object: req.body.object,
-       
+        objectt: req.body.objectt,
+        name:req.body.name,
         from: req.body.from,
         to : req.body.to
     
@@ -77,7 +77,7 @@ exports.update = (req, res) => {
     // Find note and update it with the request body
     User.findByIdAndUpdate(req.params.messagerieId, {
         message:req.body.message,
-        object: req.body.object,
+        object: req.body.objectt,
        
         from: req.body.from,
         to : req.body.to

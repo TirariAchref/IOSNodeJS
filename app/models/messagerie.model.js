@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const messagerieSchema = mongoose.Schema({
     message: String,
-    object: String,
-   
+    objectt: String,
+    name: String,
     from: String,
     to : String
 }, {
