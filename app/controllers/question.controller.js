@@ -16,7 +16,7 @@ exports.create = (req, res) => {
         subject : req.body.subject,
    
         idClient:req.body.idClient,
-        nbrrate : req.body.nbrrate,
+        imageClient : req.body.imageClient,
         nbruser : req.body.nbruser
     });
 

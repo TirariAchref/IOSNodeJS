@@ -4,8 +4,9 @@ const questionSchema = mongoose.Schema({
     subject : String,
     description: String,
     idClient:String,
-    nbrrate : String,
+    imageClient : String,
     nbruser : String
+
 }, {
     timestamps: false,
     versionKey: false
